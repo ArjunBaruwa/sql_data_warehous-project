@@ -70,5 +70,5 @@ CREATE Table bronze.erp_px_cat_glv2 (
 	id NVARCHAR(50),
 	cat NVARCHAR(50),
 	subcat NVARCHAR(50),
-	maintenance NVARCHAR(50),
+	maintenance NVARCHAR(50)
 );
