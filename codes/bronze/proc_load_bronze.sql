@@ -36,7 +36,7 @@ BEGIN
 
 		PRINT '>>Inserting Data Into: bronze.crm_cust_info';
 		BULK INSERT bronze.crm_cust_info
-		FROM '/tmp/data/cust_info.csv'
+		FROM '/tmp/data/cust_info.csv'  -- Location of CSV file
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -52,7 +52,7 @@ BEGIN
 
 		PRINT '>>Inserting Data Into: bronze.crm_prd_info';
 		BULK INSERT bronze.crm_prd_info
-		FROM '/tmp/data/prd_info.csv'
+		FROM '/tmp/data/prd_info.csv'  -- Location of CSV file
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -69,7 +69,7 @@ BEGIN
 
 		PRINT '>>Inserting Data Into: bronze.crm_sales_details';
 		BULK INSERT bronze.crm_sales_details
-		FROM '/tmp/data/sales_details.csv'
+		FROM '/tmp/data/sales_details.csv'  -- Location of CSV file
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -89,7 +89,7 @@ BEGIN
 
 		PRINT '>>Inserting Data Into: bronze.erp_cust_az12';
 		BULK INSERT bronze.erp_cust_az12
-		FROM '/tmp/data/cust_az12.csv'
+		FROM '/tmp/data/cust_az12.csv'   -- Location of CSV file
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -105,7 +105,7 @@ BEGIN
 
 		PRINT '>>Inserting Data Into: bronze.erp_loc_a101';
 		BULK INSERT bronze.erp_loc_a101
-		FROM '/tmp/data/loc_a101.csv'
+		FROM '/tmp/data/loc_a101.csv'  -- Location of CSV file
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -121,7 +121,7 @@ BEGIN
 
 		PRINT '>>Inserting Data Into: bronze.erp_px_cat_glv2';
 		BULK INSERT bronze.erp_px_cat_glv2
-		FROM '/tmp/data/px_cat_g1v2.csv'
+		FROM '/tmp/data/px_cat_g1v2.csv'  -- Location of CSV file
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
