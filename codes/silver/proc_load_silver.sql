@@ -19,23 +19,23 @@ Usage Example:
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS	
 BEGIN
-	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME, 
+	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME 
 	BEGIN TRY
 		SET @batch_start_time = GETDATE();
 		
-		PRINT "===================================================================";
-		PRINT "Loading Data Into Silver Layer";
-		PRINT "===================================================================";
+		PRINT '===================================================================';
+		PRINT 'Loading Data Into Silver Layer';
+		PRINT '===================================================================';
 		
-		PRINT "-------------------------------------------------------------------";
-		PRINT "Loading Data Related To CRM System";
-		PRINT "-------------------------------------------------------------------";
+		PRINT '-------------------------------------------------------------------';
+		PRINT 'Loading Data Related To CRM System';
+		PRINT '-------------------------------------------------------------------';
 		
 		SET @start_time = GETDATE();
-		PRINT "--<< Truncating Table: silver.crm_cust_info";
+		PRINT '--<< Truncating Table: silver.crm_cust_info';
 		TRUNCATE TABLE silver.crm_cust_info;
 		--Inserting data into silver table crm_cust_info from bronze layer
-		PRINT "--<< Inserting Data Into: silver.crm_cust_info";
+		PRINT '--<< Inserting Data Into: silver.crm_cust_info';
 		INSERT INTO silver.crm_cust_info (
 			cst_id, 
 			cst_key, 
@@ -69,14 +69,14 @@ BEGIN
 
 		SET @end_time = GETDATE();
 		
-		PRINT "Load Duration: " + CAST(DATEDIFF(seconds, @start_time, @end_time) AS NVARCHAR) + " seconds";
-		PRINT "--------------------------------------------";
+		PRINT 'Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '--------------------------------------------';
 		
 		SET @start_time = GETDATE();
-		PRINT "--<< Truncating Table: silver.crm_prd_info";
+		PRINT '--<< Truncating Table: silver.crm_prd_info';
 		TRUNCATE TABLE silver.crm_prd_info;
 		--Inserting data into silver table crm_prd_info from bronze layer
-		PRINT "--<< Inserting Data Into: silver.crm_prd_info";
+		PRINT '--<< Inserting Data Into: silver.crm_prd_info';
 		INSERT INTO silver.crm_prd_info (
 			prd_id,
 			cat_id,
@@ -105,14 +105,14 @@ BEGIN
 		
 		SET @end_time = GETDATE();
 		
-		PRINT "Load Duration: " + CAST(DATEDIFF(seconds, @start_time, @end_time) AS NVARCHAR) + " seconds";
-		PRINT "--------------------------------------------";
+		PRINT 'Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '--------------------------------------------';
 
 		SET @start_time = GETDATE();
-		PRINT "--<< Truncating Table: silver.crm_sales_details";
+		PRINT '--<< Truncating Table: silver.crm_sales_details';
 		TRUNCATE TABLE silver.crm_sales_details
 		--Inserting data into silver table crm_sales_details from bronze layer
-		PRINT "--<< Inserting Data Into: silver.crm_sales_details";
+		PRINT '--<< Inserting Data Into: silver.crm_sales_details';
 		INSERT INTO silver.crm_sales_details (
 			sls_ord_num,
 			sls_prd_key,
@@ -152,18 +152,18 @@ BEGIN
 		 
 		SET @end_time = GETDATE();
 		
-		PRINT "Load Duration: " + CAST(DATEDIFF(seconds, @start_time, @end_time) AS NVARCHAR) + " seconds";
-		PRINT "--------------------------------------------";
+		PRINT 'Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '--------------------------------------------';
 		
-		PRINT "-------------------------------------------------------------------";
-		PRINT "Loading Data Related To ERP System";
-		PRINT "-------------------------------------------------------------------";
+		PRINT '-------------------------------------------------------------------';
+		PRINT 'Loading Data Related To ERP System';
+		PRINT '-------------------------------------------------------------------';
 		
 		SET @start_time = GETDATE();
-		PRINT "--<< Truncating Table: silver.erp_cust_az12";
+		PRINT '--<< Truncating Table: silver.erp_cust_az12';
 		TRUNCATE TABLE silver.erp_cust_az12
 		--Inserting data into silver table erp_cust_az12 from bronze layer
-		PRINT "--<< Inserting Data Into: silver.erp_cust_az12";
+		PRINT '--<< Inserting Data Into: silver.erp_cust_az12';
 		INSERT INTO silver.erp_cust_az12 (
 			cid, 
 			bdate, 
@@ -186,12 +186,12 @@ BEGIN
 		
 		SET @end_time = GETDATE();
 		
-		PRINT "Load Duration: " + CAST(DATEDIFF(seconds, @start_time, @end_time) AS NVARCHAR) + " seconds";
-		PRINT "--------------------------------------------";
+		PRINT 'Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '--------------------------------------------';
 
 		SET @start_time = GETDATE();
 		--Inserting data into silver table erp_loc_a101 from bronze layer
-		PRINT "--<< Inserting Data Into: silver.erp_loc_a101";
+		PRINT '--<< Inserting Data Into: silver.erp_loc_a101';
 		INSERT INTO silver.erp_loc_a101 (cid, cntry)
 		SELECT
 			REPLACE(cid, '-', '') AS cid,
@@ -211,14 +211,14 @@ BEGIN
 		
 		SET @end_time = GETDATE();
 		
-		PRINT "Load Duration: " + CAST(DATEDIFF(seconds, @start_time, @end_time) AS NVARCHAR) + " seconds";
-		PRINT "--------------------------------------------";
+		PRINT 'Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '--------------------------------------------';
 		
 		SET @start_time = GETDATE();
-		PRINT "--<< Truncating Table: silver.erp_px_cat_glv2";
+		PRINT '--<< Truncating Table: silver.erp_px_cat_glv2';
 		TRUNCATE TABLE silver.erp_px_cat_glv2
 		--Inserting data into silver table erp_px_cat_glv2 from bronze layer
-		PRINT "--<< Inserting Data Into: silver.erp_px_cat_glv2";
+		PRINT '--<< Inserting Data Into: silver.erp_px_cat_glv2';
 		INSERT INTO silver.erp_px_cat_glv2 (
 			id, 
 			cat, 
@@ -242,23 +242,23 @@ BEGIN
 		
 		SET @end_time = GETDATE();
 		
-		PRINT "Load Duration: " + CAST(DATEDIFF(seconds, @start_time, @end_time) AS NVARCHAR) + " seconds";
-		PRINT "--------------------------------------------";
+		PRINT 'Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '--------------------------------------------';
 		
 		SET @batch_end_time= GETDATE();
-		PRINT "==========================================================";
-		PRINT "Loading Date Into Silver Layer Is Completed";
-		PRINT "Load Duration: " + CAST(DATEDIFF(seconds, @batch_start_time, @batch_end_time) AS NVARCHAR) + " seconds";
-		PRINT "==========================================================";
+		PRINT '==========================================================';
+		PRINT 'Loading Date Into Silver Layer Is Completed';
+		PRINT 'Load Duration: ' + CAST(DATEDIFF(second, @batch_start_time, @batch_end_time) AS NVARCHAR) + ' seconds';
+		PRINT '==========================================================';
 		
 	END TRY
 	BEGIN CATCH
-		PRINT "==========================================================";
-		PRINT "Error occured during loading data into Silver layer";
-		PRINT "Error Message:" + ERROR_MESSAGE();
-		PRINT "Error Message:" + CAST(ERROR_NUMBER() AS NVARCHAR);
-		PRINT "Error Message:" + CAST(ERROR_NUMBER() AS NVARCHAR);
-		PRINT "==========================================================";
+		PRINT '==========================================================';
+		PRINT 'Error occured during loading data into Silver layer';
+		PRINT 'Error Message:' + ERROR_MESSAGE();
+		PRINT 'Error Message:' + CAST(ERROR_NUMBER() AS NVARCHAR);
+		PRINT 'Error Message:' + CAST(ERROR_NUMBER() AS NVARCHAR);
+		PRINT '==========================================================';
 	END CATCH
 	
 END
